@@ -8,7 +8,11 @@ import random
 import pandas as pd
 from faker import Faker
 
-from event_generator.config import RANDOM_SEED
+from event_generator.config import (
+    RANDOM_SEED,
+    FIRST_NAMES,
+    LAST_NAMES,
+)
 from event_generator.utils.id_generator import generate_id
 
 # -----------------------------
@@ -17,7 +21,7 @@ from event_generator.utils.id_generator import generate_id
 
 random.seed(RANDOM_SEED)
 
-fake = Faker()
+fake = Faker("en_IN")
 
 Faker.seed(RANDOM_SEED)
 
@@ -48,11 +52,20 @@ def generate_student(student_number: int) -> dict:
 
     branch = branches_df.sample(n=1).iloc[0]
 
+    first_name = random.choice(FIRST_NAMES)
+    last_name = random.choice(LAST_NAMES)
+
+    email = (
+    f"{first_name.lower()}."
+    f"{last_name.lower()}"
+    f"{student_number:04}@nhce.edu"
+    )
+
     student = {
         "Student_ID": generate_id("STU", student_number),
-        "First_Name": fake.first_name(),
-        "Last_Name": fake.last_name(),
-        "College_Email": f"stu{student_number:04}@nhce.edu",
+        "First_Name": first_name,
+        "Last_Name": last_name,
+        "College_Email": email,
         "Branch_ID": branch["Branch_ID"],
         "CGPA": round(random.uniform(6.0, 9.95), 2),
         "Active_Backlogs": random.choices(
@@ -67,4 +80,47 @@ def generate_student(student_number: int) -> dict:
 
     return student
 
-v
+def generate_students(count: int = 600) -> pd.DataFrame:
+    """
+    Generate a DataFrame containing synthetic student records.
+    """
+
+    students = [
+        generate_student(i)
+        for i in range(1, count + 1)
+    ]
+
+    return pd.DataFrame(students)
+
+def save_students(df: pd.DataFrame):
+    """
+    Save generated students to CSV.
+    """
+
+    output_file = (
+        REFERENCE_DATA /
+        "students.csv"
+    )
+
+    df.to_csv(
+        output_file,
+        index=False
+    )
+
+    print(
+        f"Generated {len(df)} students."
+    )
+
+    print(
+        f"Saved to {output_file}"
+    )
+
+if __name__ == "__main__":
+
+    students_df = generate_students()
+
+    save_students(students_df)
+
+    print()
+
+    print(students_df.head())

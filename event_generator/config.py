@@ -88,3 +88,33 @@ COMPANIES = [
     "Freshworks",
     "Zoho"
 ]
+
+# -----------------------------
+# Student Names
+# -----------------------------
+
+FIRST_NAMES = [
+    "Aarav", "Aditya", "Akhil", "Ananya", "Anika",
+    "Arjun", "Aryan", "Ayesha", "Diya", "Harsh",
+    "Ishaan", "Karan", "Kavya", "Meera", "Neha",
+    "Nikhil", "Pooja", "Pranav", "Priya", "Rahul",
+    "Rohan", "Sai", "Sakshi", "Sanjana", "Shreya",
+    "Sneha", "Tanmay", "Varun", "Vedant", "Vihaan",
+    "Yash", "Aditi", "Ritika", "Simran", "Abhishek",
+    "Akash", "Anirudh", "Bhavya", "Charan", "Deepika",
+    "Dev", "Gaurav", "Keerthi", "Lakshmi", "Manasa",
+    "Nandini", "Naveen", "Nithin", "Ritika", "Suhas"
+]
+
+LAST_NAMES = [
+    "Sharma", "Verma", "Patel", "Reddy", "Nair",
+    "Iyer", "Rao", "Kulkarni", "Shetty", "Naik",
+    "Bhat", "Hegde", "Menon", "Pai", "Prabhu",
+    "Kamath", "Acharya", "Shenoy", "Kumar", "Gupta",
+    "Singh", "Joshi", "Mishra", "Das", "Chowdhury",
+    "Jain", "Agarwal", "Malhotra", "Kapoor", "Mehta",
+    "Saxena", "Pandey", "Yadav", "Sinha", "Tripathi",
+    "Rastogi", "Bhatt", "Desai", "Patil", "Gowda",
+    "Pillai", "Fernandes", "D'Souza", "Pereira", "Lobo",
+    "Alva", "Poojary", "Suvarna", "Shekar", "Murthy"
+]
