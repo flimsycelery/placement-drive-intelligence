@@ -26,7 +26,8 @@ Represents a student eligible for campus placements.
 | CGPA | Current CGPA |
 | Backlogs | Number of active backlogs |
 | Graduation_Year | Expected graduation year |
-| Skills | Technical skills |
+
+# Student skills are maintained in a separate Student_Skills entity to support a many-to-many relationship between students and skills.
 
 ---
 
