@@ -107,7 +107,7 @@ def generate_student(student_number: int) -> dict:
             weights=[80, 15, 5]
         )[0],
         "Graduation_Year": 2027,
-        "Resume_Score": resume_score,
+        "Candidate_Score": None,
         "Profile_Created_Date": "2026-08-01",
         "Is_Active": True
     }
