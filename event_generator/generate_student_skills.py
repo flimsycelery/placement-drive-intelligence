@@ -39,3 +39,56 @@ skill_lookup = dict(
         skills_df["Skill_ID"]
     )
 )
+
+student_skills = []
+
+for _, student in students_df.iterrows():
+
+    student_id = student["Student_ID"]
+
+    branch_name = branch_lookup[student["Branch_ID"]]
+
+    mapping = BRANCH_SKILL_MAPPING[branch_name]
+
+    core_skills = mapping["core"]
+
+    optional_skills = mapping["optional"]
+
+selected_optional = random.sample(
+    optional_skills,
+    k=random.randint(
+        1,
+        min(3, len(optional_skills))
+    )
+)
+
+assigned_skills = (
+    core_skills +
+    selected_optional
+)
+
+for skill in assigned_skills:
+
+    student_skills.append(
+        {
+            "Student_ID": student_id,
+            "Skill_ID": skill_lookup[skill]
+        }
+    )
+
+student_skills_df = pd.DataFrame(
+    student_skills
+)
+
+student_skills_df.to_csv(
+    REFERENCE_DATA / "student_skills.csv",
+    index=False
+)
+
+print(student_skills_df.head())
+
+print()
+
+print(
+    f"Generated {len(student_skills_df)} student skills."
+)
