@@ -118,3 +118,94 @@ LAST_NAMES = [
     "Pillai", "Fernandes", "D'Souza", "Pereira", "Lobo",
     "Alva", "Poojary", "Suvarna", "Shekar", "Murthy"
 ]
+
+BRANCH_SKILL_MAPPING = {
+    "Computer Science Engineering": {
+        "core": [
+            "Python",
+            "SQL",
+            "Java",
+            "Git"
+        ],
+        "optional": [
+            "JavaScript",
+            "Docker",
+            "Azure",
+            "Databricks"
+        ]
+    },
+
+    "Information Science Engineering": {
+        "core": [
+            "Python",
+            "SQL",
+            "Java",
+            "Git"
+        ],
+        "optional": [
+            "Power BI",
+            "Azure",
+            "Excel"
+        ]
+    },
+
+    "Data Science": {
+        "core": [
+            "Python",
+            "SQL",
+            "Pandas",
+            "Machine Learning"
+        ],
+        "optional": [
+            "Power BI",
+            "Microsoft Fabric",
+            "Apache Spark",
+            "Azure"
+        ]
+    },
+
+    "Artificial Intelligence & Machine Learning": {
+        "core": [
+            "Python",
+            "Machine Learning",
+            "Pandas"
+        ],
+        "optional": [
+            "SQL",
+            "Power BI",
+            "Azure"
+        ]
+    },
+
+    "Electronics & Communication": {
+        "core": [
+            "C++",
+            "Python"
+        ],
+        "optional": [
+            "Git",
+            "SQL",
+            "Excel"
+        ]
+    },
+
+    "Mechanical Engineering": {
+        "core": [
+            "Excel"
+        ],
+        "optional": [
+            "Python",
+            "Communication"
+        ]
+    },
+
+    "Civil Engineering": {
+        "core": [
+            "Excel"
+        ],
+        "optional": [
+            "Communication",
+            "Python"
+        ]
+    }
+}
