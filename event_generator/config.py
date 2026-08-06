@@ -188,6 +188,17 @@ BRANCH_SKILL_MAPPING = {
             "Excel"
         ]
     },
+    "Electrical & Electronics": {
+    "core": [
+        "Python",
+        "Excel"
+    ],
+    "optional": [
+        "SQL",
+        "Git",
+        "C++"
+    ]
+    },
 
     "Mechanical Engineering": {
         "core": [

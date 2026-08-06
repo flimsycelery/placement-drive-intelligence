@@ -54,27 +54,34 @@ for _, student in students_df.iterrows():
 
     optional_skills = mapping["optional"]
 
-selected_optional = random.sample(
+    selected_optional = random.sample(
     optional_skills,
     k=random.randint(
         1,
         min(3, len(optional_skills))
     )
-)
+    )
 
-assigned_skills = (
-    core_skills +
-    selected_optional
-)
+    assigned_skills = (
+        core_skills +
+        selected_optional
+    )
 
-for skill in assigned_skills:
+    for skill in assigned_skills:
 
-    student_skills.append(
+        student_skills.append(
         {
             "Student_ID": student_id,
             "Skill_ID": skill_lookup[skill]
         }
     )
+
+if branch_name not in BRANCH_SKILL_MAPPING:
+    raise ValueError(
+        f"No skill mapping found for branch: {branch_name}"
+    )
+
+mapping = BRANCH_SKILL_MAPPING[branch_name]
 
 student_skills_df = pd.DataFrame(
     student_skills
@@ -85,6 +92,7 @@ student_skills_df.to_csv(
     index=False
 )
 
+
 print(student_skills_df.head())
 
 print()
@@ -92,3 +100,7 @@ print()
 print(
     f"Generated {len(student_skills_df)} student skills."
 )
+
+print(f"Students processed: {students_df['Student_ID'].nunique()}")
+print(f"Unique skills assigned: {student_skills_df['Skill_ID'].nunique()}")
+print(f"Average skills per student: {len(student_skills_df) / len(students_df):.2f}")
