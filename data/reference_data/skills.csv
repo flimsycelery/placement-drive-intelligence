@@ -1,21 +1,21 @@
 Skill_ID,Skill_Name
-S001,Python
-S002,SQL
-S003,Java
-S004,C++
-S005,JavaScript
-S006,Power BI
-S007,Microsoft Fabric
-S008,Azure
-S009,PySpark
-S010,Apache Spark
-S011,Pandas
-S012,Machine Learning
-S013,Data Analysis
-S014,Git
-S015,Docker
-S016,Azure Data Factory
-S017,Databricks
-S018,Snowflake
-S019,Excel
-S020,Communication
+SK001,Python
+SK002,SQL
+SK003,Java
+SK004,C++
+SK005,JavaScript
+SK006,Power BI
+SK007,Microsoft Fabric
+SK008,Azure
+SK009,PySpark
+SK010,Apache Spark
+SK011,Pandas
+SK012,Machine Learning
+SK013,Data Analysis
+SK014,Git
+SK015,Docker
+SK016,Azure Data Factory
+SK017,Databricks
+SK018,Snowflake
+SK019,Excel
+SK020,Communication

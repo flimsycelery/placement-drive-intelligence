@@ -8,63 +8,59 @@ import pandas as pd
 
 from config import BRANCHES, SKILLS, ROLES, COMPANIES
 
-# -----------------------------
-# Project Paths
-# -----------------------------
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 REFERENCE_DATA = BASE_DIR / "data" / "reference_data"
 
 REFERENCE_DATA.mkdir(parents=True, exist_ok=True)
 
-# -----------------------------
-# Generate DataFrames
-# -----------------------------
 
-branches_df = pd.DataFrame({
-    "Branch_ID": [f"B{i+1:03}" for i in range(len(BRANCHES))],
-    "Branch_Name": BRANCHES
-})
+def save_reference_data(data, id_prefix, id_column, value_column, filename):
+    """
+    Generates a reference dataset with IDs
+    and saves it as a CSV.
+    """
 
-skills_df = pd.DataFrame({
-    "Skill_ID": [f"S{i+1:03}" for i in range(len(SKILLS))],
-    "Skill_Name": SKILLS
-})
+    df = pd.DataFrame({
+        id_column: [f"{id_prefix}{i+1:03}" for i in range(len(data))],
+        value_column: data
+    })
 
-roles_df = pd.DataFrame({
-    "Role_ID": [f"R{i+1:03}" for i in range(len(ROLES))],
-    "Role_Name": ROLES
-})
+    output_file = REFERENCE_DATA / filename
+    df.to_csv(output_file, index=False)
 
-companies_df = pd.DataFrame({
-    "Company_ID": [f"C{i+1:03}" for i in range(len(COMPANIES))],
-    "Company_Name": COMPANIES
-})
+    print(f"Created {filename}")
 
-# -----------------------------
-# Save CSV files
-# -----------------------------
 
-branches_df.to_csv(
-    REFERENCE_DATA / "branches.csv",
-    index=False
+save_reference_data(
+    BRANCHES,
+    "B",
+    "Branch_ID",
+    "Branch_Name",
+    "branches.csv"
 )
 
-skills_df.to_csv(
-    REFERENCE_DATA / "skills.csv",
-    index=False
+save_reference_data(
+    SKILLS,
+    "SK",
+    "Skill_ID",
+    "Skill_Name",
+    "skills.csv"
 )
 
-roles_df.to_csv(
-    REFERENCE_DATA / "roles.csv",
-    index=False
+save_reference_data(
+    ROLES,
+    "R",
+    "Role_ID",
+    "Role_Name",
+    "roles.csv"
 )
 
-companies_df.to_csv(
-    REFERENCE_DATA / "companies.csv",
-    index=False
+save_reference_data(
+    COMPANIES,
+    "C",
+    "Company_ID",
+    "Company_Name",
+    "companies.csv"
 )
 
-print("Reference datasets generated successfully!")
-print(f"Location: {REFERENCE_DATA}")
+print("\nReference datasets generated successfully.")
