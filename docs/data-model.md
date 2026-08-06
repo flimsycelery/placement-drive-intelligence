@@ -21,11 +21,15 @@ Represents a student eligible for campus placements.
 | Field | Description |
 |--------|-------------|
 | Student_ID | Unique student identifier |
-| Name | Student name |
+| First_Name | Student first name |
+| Last_Name | Student last name |
 | Branch_ID | Reference to student's academic branch |
 | CGPA | Current CGPA |
 | Backlogs | Number of active backlogs |
 | Graduation_Year | Expected graduation year |
+| Resume_Score | For Analytics |
+| Profile_Created_Date | Auditing |
+| Is_Active | Current student status |
 
 # Student skills are maintained in a separate Student_Skills entity to support a many-to-many relationship between students and skills.
 
