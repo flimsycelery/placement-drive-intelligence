@@ -45,6 +45,23 @@ skills_df = pd.read_csv(
     REFERENCE_DATA / "skills.csv"
 )
 
+def calculate_resume_score(cgpa: float, active_backlogs: int) -> int:
+    """
+    Calculate a synthetic resume score based on
+    academic performance.
+    """
+
+    score = cgpa * 10
+
+    if active_backlogs == 1:
+        score -= 10
+    elif active_backlogs >= 2:
+        score -= 20
+
+    score = max(0, min(100, score))
+
+    return round(score)
+
 def generate_student(student_number: int) -> dict:
     """
     Generate one synthetic student.
@@ -61,6 +78,23 @@ def generate_student(student_number: int) -> dict:
     f"{student_number:04}@nhce.edu"
     )
 
+    cgpa = round(random.uniform(6.0, 9.95), 2)
+
+    active_backlogs = random.choices(
+        [0, 1, 2],
+        weights=[80, 15, 5]
+    )[0]
+
+    resume_score = calculate_resume_score(
+        cgpa,
+        active_backlogs
+    )
+
+    resume_score = calculate_resume_score(
+        cgpa,
+        active_backlogs
+    )
+
     student = {
         "Student_ID": generate_id("STU", student_number),
         "First_Name": first_name,
@@ -73,7 +107,7 @@ def generate_student(student_number: int) -> dict:
             weights=[80, 15, 5]
         )[0],
         "Graduation_Year": 2027,
-        "Resume_Score": None,
+        "Resume_Score": resume_score,
         "Profile_Created_Date": "2026-08-01",
         "Is_Active": True
     }
