@@ -220,3 +220,247 @@ BRANCH_SKILL_MAPPING = {
         ]
     }
 }
+
+# -----------------------------
+# Placement Role Rules
+# -----------------------------
+
+# -----------------------------
+# Placement Role Rules
+# -----------------------------
+
+ROLE_RULES = {
+    "Software Engineer": {
+        "required_skills": [
+            "Python",
+            "SQL",
+            "Git",
+        ],
+        "optional_skills": [
+            "Java",
+            "JavaScript",
+            "Docker",
+            "C++",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+            "Electronics & Communication",
+            "Electrical & Electronics",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (6.0, 18.0),
+    },
+
+    "Data Analyst": {
+        "required_skills": [
+            "SQL",
+            "Excel",
+            "Power BI",
+        ],
+        "optional_skills": [
+            "Python",
+            "Pandas",
+            "Data Analysis",
+            "Communication",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+            "Electronics & Communication",
+            "Mechanical Engineering",
+        ],
+        "cgpa_range": (6.5, 8.5),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (5.0, 12.0),
+    },
+
+    "Data Engineer": {
+        "required_skills": [
+            "Python",
+            "SQL",
+        ],
+        "optional_skills": [
+            "Apache Spark",
+            "PySpark",
+            "Microsoft Fabric",
+            "Azure",
+            "Azure Data Factory",
+            "Databricks",
+            "Git",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 0,
+        "ctc_range_lpa": (7.0, 20.0),
+    },
+
+    "Business Analyst": {
+        "required_skills": [
+            "Excel",
+            "Data Analysis",
+        ],
+        "optional_skills": [
+            "SQL",
+            "Power BI",
+            "Communication",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Electronics & Communication",
+            "Mechanical Engineering",
+            "Civil Engineering",
+        ],
+        "cgpa_range": (6.5, 8.5),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (5.0, 12.0),
+    },
+
+    "Machine Learning Engineer": {
+        "required_skills": [
+            "Python",
+            "Machine Learning",
+            "Pandas",
+        ],
+        "optional_skills": [
+            "SQL",
+            "PySpark",
+            "Apache Spark",
+            "Databricks",
+            "Git",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+            "Information Science Engineering",
+        ],
+        "cgpa_range": (7.5, 9.5),
+        "backlog_limit": 0,
+        "ctc_range_lpa": (8.0, 22.0),
+    },
+
+    "Cloud Engineer": {
+        "required_skills": [
+            "Python",
+            "Azure",
+            "Git",
+        ],
+        "optional_skills": [
+            "Docker",
+            "SQL",
+            "Azure Data Factory",
+            "Databricks",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+            "Electronics & Communication",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (6.0, 16.0),
+    },
+
+    "Backend Developer": {
+        "required_skills": [
+            "Python",
+            "SQL",
+            "Git",
+        ],
+        "optional_skills": [
+            "Java",
+            "C++",
+            "Docker",
+            "Azure",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+            "Electronics & Communication",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (6.0, 18.0),
+    },
+
+    "Frontend Developer": {
+        "required_skills": [
+            "JavaScript",
+        ],
+        "optional_skills": [
+            "Git",
+            "Python",
+            "SQL",
+            "Communication",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Artificial Intelligence & Machine Learning",
+        ],
+        "cgpa_range": (6.5, 8.5),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (5.0, 15.0),
+    },
+
+    "Full Stack Developer": {
+        "required_skills": [
+            "JavaScript",
+            "SQL",
+            "Git",
+        ],
+        "optional_skills": [
+            "Python",
+            "Java",
+            "Docker",
+            "Azure",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Data Science",
+            "Artificial Intelligence & Machine Learning",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 1,
+        "ctc_range_lpa": (6.0, 18.0),
+    },
+
+    "DevOps Engineer": {
+        "required_skills": [
+            "Git",
+            "Docker",
+        ],
+        "optional_skills": [
+            "Azure",
+            "Python",
+            "Azure Data Factory",
+            "Databricks",
+        ],
+        "eligible_branches": [
+            "Computer Science Engineering",
+            "Information Science Engineering",
+            "Artificial Intelligence & Machine Learning",
+        ],
+        "cgpa_range": (7.0, 9.0),
+        "backlog_limit": 0,
+        "ctc_range_lpa": (7.0, 18.0),
+    },
+}
