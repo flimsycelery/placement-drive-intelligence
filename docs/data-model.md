@@ -79,6 +79,8 @@ Represents a hiring drive conducted by a company.
 | Registration_End | Registration closing date |
 | Minimum_CGPA | Minimum CGPA required |
 | Eligibility_Backlogs | Maximum allowed active backlogs |
+| CTC_LPA | Compensation offered |
+| Open_Positions | Approximate hiring requirement |
 | Status | Open / Closed / Completed |
 
 ---
@@ -88,6 +90,17 @@ Represents a hiring drive conducted by a company.
 | -------- |----------- |
 | Drive_ID | Placement drive |
 | Branch_ID | Eligible branch |
+
+---
+
+## Drive_Required_Skills
+
+Represents the technical skills required for a placement drive.
+
+| Field | Description |
+|--------|-------------|
+| Drive_ID | Reference to the placement drive |
+| Skill_ID | Required technical skill |
 
 ---
 
