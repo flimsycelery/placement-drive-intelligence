@@ -89,10 +89,182 @@ def validate_role_rules():
     print("Role configuration validation passed.")
 
 
+def generate_placement_drives(count: int = 40):
+    """
+    Generate synthetic placement drives along with
+    branch eligibility and required skill mappings.
+    """
+
+    drives = []
+    drive_branches = []
+    drive_required_skills = []
+
+    for drive_number in range(1, count + 1):
+
+        # -----------------------------
+        # Select company and role
+        # -----------------------------
+
+        company = companies_df.sample(
+            n=1,
+            random_state=RANDOM_SEED + drive_number
+        ).iloc[0]
+
+        role = roles_df.sample(
+            n=1,
+            random_state=RANDOM_SEED + drive_number * 10
+        ).iloc[0]
+
+        role_name = role["Role_Name"]
+
+        rules = ROLE_RULES[role_name]
+
+        # -----------------------------
+        # Generate dates
+        # -----------------------------
+
+        registration_start = date(2026, 8, 1) + timedelta(
+            days=random.randint(0, 60)
+        )
+
+        registration_end = registration_start + timedelta(
+            days=random.randint(5, 10)
+        )
+
+        # -----------------------------
+        # Eligibility
+        # -----------------------------
+
+        minimum_cgpa = round(
+            random.uniform(
+                rules["cgpa_range"][0],
+                rules["cgpa_range"][1]
+            ),
+            2
+        )
+
+        backlog_limit = rules["backlog_limit"]
+
+        # -----------------------------
+        # Compensation
+        # -----------------------------
+
+        ctc = round(
+            random.uniform(
+                rules["ctc_range_lpa"][0],
+                rules["ctc_range_lpa"][1]
+            ),
+            1
+        )
+
+        # -----------------------------
+        # Positions
+        # -----------------------------
+
+        open_positions = random.randint(2, 20)
+
+        # -----------------------------
+        # Drive ID
+        # -----------------------------
+
+        drive_id = generate_id(
+            "DRV",
+            drive_number
+        )
+
+        # -----------------------------
+        # Drive record
+        # -----------------------------
+
+        drives.append(
+            {
+                "Drive_ID": drive_id,
+                "Company_ID": company["Company_ID"],
+                "Role_ID": role["Role_ID"],
+                "Registration_Start": registration_start,
+                "Registration_End": registration_end,
+                "Minimum_CGPA": minimum_cgpa,
+                "Eligibility_Backlogs": backlog_limit,
+                "CTC_LPA": ctc,
+                "Open_Positions": open_positions,
+                "Status": "Open",
+            }
+        )
+
+        # -----------------------------
+        # Eligible branches
+        # -----------------------------
+
+        for branch_name in rules["eligible_branches"]:
+
+            branch_id = branches_df.loc[
+                branches_df["Branch_Name"] == branch_name,
+                "Branch_ID"
+            ].iloc[0]
+
+            drive_branches.append(
+                {
+                    "Drive_ID": drive_id,
+                    "Branch_ID": branch_id,
+                }
+            )
+
+        # -----------------------------
+        # Required skills
+        # -----------------------------
+
+        for skill_name in rules["required_skills"]:
+
+            skill_id = skills_df.loc[
+                skills_df["Skill_Name"] == skill_name,
+                "Skill_ID"
+            ].iloc[0]
+
+            drive_required_skills.append(
+                {
+                    "Drive_ID": drive_id,
+                    "Skill_ID": skill_id,
+                }
+            )
+
+    return (
+        pd.DataFrame(drives),
+        pd.DataFrame(drive_branches),
+        pd.DataFrame(drive_required_skills),
+    )
+
+
 if __name__ == "__main__":
+
     validate_role_rules()
 
-    print(f"Companies loaded: {len(companies_df)}")
-    print(f"Roles loaded: {len(roles_df)}")
-    print(f"Branches loaded: {len(branches_df)}")
-    print(f"Skills loaded: {len(skills_df)}")
+    drives_df, drive_branches_df, drive_required_skills_df = (
+        generate_placement_drives()
+    )
+
+    drives_df.to_csv(
+        REFERENCE_DATA / "placement_drives.csv",
+        index=False
+    )
+
+    drive_branches_df.to_csv(
+        REFERENCE_DATA / "drive_branches.csv",
+        index=False
+    )
+
+    drive_required_skills_df.to_csv(
+        REFERENCE_DATA / "drive_required_skills.csv",
+        index=False
+    )
+
+    print()
+    print("Placement drive generation completed.")
+    print(f"Drives generated: {len(drives_df)}")
+    print(f"Drive-branch mappings: {len(drive_branches_df)}")
+    print(
+        f"Drive-skill mappings: "
+        f"{len(drive_required_skills_df)}"
+    )
+
+    print()
+    print(drives_df.head())
