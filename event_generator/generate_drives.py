@@ -97,7 +97,7 @@ def generate_placement_drives(count: int = 40):
 
     drives = []
     drive_branches = []
-    drive_required_skills = []
+    drive_skills = []
 
     for drive_number in range(1, count + 1):
 
@@ -210,7 +210,7 @@ def generate_placement_drives(count: int = 40):
             )
 
         # -----------------------------
-        # Required skills
+        # Drive skills
         # -----------------------------
 
         for skill_name in rules["required_skills"]:
@@ -220,17 +220,34 @@ def generate_placement_drives(count: int = 40):
                 "Skill_ID"
             ].iloc[0]
 
-            drive_required_skills.append(
+            drive_skills.append(
                 {
                     "Drive_ID": drive_id,
                     "Skill_ID": skill_id,
+                    "Skill_Type": "Required",
+                }
+            )
+
+
+        for skill_name in rules["optional_skills"]:
+
+            skill_id = skills_df.loc[
+                skills_df["Skill_Name"] == skill_name,
+                "Skill_ID"
+            ].iloc[0]
+
+            drive_skills.append(
+                {
+                    "Drive_ID": drive_id,
+                    "Skill_ID": skill_id,
+                    "Skill_Type": "Recommended",
                 }
             )
 
     return (
         pd.DataFrame(drives),
         pd.DataFrame(drive_branches),
-        pd.DataFrame(drive_required_skills),
+        pd.DataFrame(drive_skills),
     )
 
 
@@ -238,7 +255,7 @@ if __name__ == "__main__":
 
     validate_role_rules()
 
-    drives_df, drive_branches_df, drive_required_skills_df = (
+    drives_df, drive_branches_df, drive_skills_df = (
         generate_placement_drives()
     )
 
@@ -252,8 +269,8 @@ if __name__ == "__main__":
         index=False
     )
 
-    drive_required_skills_df.to_csv(
-        REFERENCE_DATA / "drive_required_skills.csv",
+    drive_skills_df.to_csv(
+        REFERENCE_DATA / "drive_skills.csv",
         index=False
     )
 
@@ -263,7 +280,7 @@ if __name__ == "__main__":
     print(f"Drive-branch mappings: {len(drive_branches_df)}")
     print(
         f"Drive-skill mappings: "
-        f"{len(drive_required_skills_df)}"
+        f"{len(drive_skills_df)}"
     )
 
     print()
